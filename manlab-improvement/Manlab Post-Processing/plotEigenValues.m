@@ -12,19 +12,17 @@ nCurve = recastedDiagram.nCurve;
 drawtype_Array = recastedDiagram.drawtype_Array;
 
 
-figure("Name","Eigen Values")
+eigenValueFigure = figure("Name","Eigen Values");
 hold on
 grid
 for iCurve = 1:nCurve
     plot(lambda_Cell{iCurve}(eigenIndex_Cell{iCurve}),...
         real(eigenValues_Cell{iCurve}),strcat(drawtype_Array(iCurve),'b'))
 end
-stableLegend = plot([0 0],[0 0],'-b',"DisplayName","Stable Solutions");
-unstableLegend = plot([0 0],[0 0],':b',"DisplayName","Unstable Solutions");
-bifurcationPlots = plot(lambdaBifurcation,real(eigenValuesBifurcation),'pentagramb',"DisplayName",...
-    "Bifurcations");
+scatter(lambdaBifurcation,real(eigenValuesBifurcation),'pentagramb');
 hold off
-legend([stableLegend,unstableLegend,bifurcationPlots],"Location","best")
+
+addDiagramLegend(eigenValueFigure);
 
 
 end

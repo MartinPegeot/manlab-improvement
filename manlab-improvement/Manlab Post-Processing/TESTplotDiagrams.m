@@ -18,6 +18,6 @@ sys = load(strcat(pathName,"SysODE\",sysName)).sys;
 recastedDiagram = recastDiagramInformations(diagram);
 
 plotManlabDiagram(recastedDiagram)
-plot2NormDiagram(recastedDiagram,sys)
+plotNorm2Diagram(recastedDiagram,sys);
 plotEigenValues(recastedDiagram,sys)
 
