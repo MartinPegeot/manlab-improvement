@@ -25,7 +25,7 @@ for iDiagram = 2:nDiagram
         Upp_Cell{end} = [Upp_Cell{end} Upp];
         eigenVectors_Cell{end} = [eigenVectors_Cell{end} eigenVectors];
         eigenValues_Cell{end} = [eigenValues_Cell{end} eigenValues];
-        nPoint = size(Upp_Cell{end},2);
+        nPoint = sizeUpp_Cell);
         eigenIndex_Cell{end} = [eigenIndex_Cell{end} nPoint];
     elseif isBifurcating
         iBifurcation = currentSection.ind_change;
@@ -41,7 +41,7 @@ for iDiagram = 2:nDiagram
         drawtype_Array(end+1) = currentSection.drawtype_end;
         eigenVectors_Cell{end+1} = eigenVectors;
         eigenValues_Cell{end+1} = eigenValues;
-        nPoint = size(Upp_Cell{end},2);
+        nPoint = countNumberOfPoints(Upp_Cell);
         eigenIndex_Cell{end+1} = nPoint;
         eigenValuesBifurcation(end+1) = currentSection.Eigen.values;
         eigenVectorsBifurcation(:,end+1) = currentSection.Eigen.vectors;
@@ -52,7 +52,7 @@ for iDiagram = 2:nDiagram
         eigenVectors_Cell{end+1} = eigenVectors;
         eigenValues_Cell{end+1} = eigenValues;
         drawtype_Array(end+1) = diagram{iDiagram}.drawtype_end;
-        nPoint = size(Upp_Cell{end},2);
+        nPoint = countNumberOfPoints(Upp_Cell);
         eigenIndex_Cell{end+1} = nPoint;
     end
 end
@@ -97,7 +97,7 @@ if isBifurcating
     drawtype_Array(end+1) = firstSection.drawtype_end;
     eigenVectors_Cell{2} = eigenVectors;
     eigenValues_Cell{2} = eigenValues;
-    eigenIndex_Cell{2} = size(Upp_Cell{end},2);
+    eigenIndex_Cell{2} = countNumberOfPoints(Upp_Cell);
     eigenValuesBifurcation = [firstSection.Eigen.values];
     eigenVectorsBifurcation = [firstSection.Eigen.vectors];
 else
@@ -106,7 +106,7 @@ else
     Y_Cell = {Y};
     eigenVectors_Cell{1} = eigenVectors;
     eigenValues_Cell{1} = eigenValues;
-    eigenIndex_Cell{1} = size(Upp_Cell{end},2);
+    eigenIndex_Cell{1} = countNumberOfPoints(Upp_Cell);
 end
 
 end

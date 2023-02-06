@@ -13,10 +13,15 @@ norm2Bifurcation = getNorm2Bifurcation(Ustab,sys);
 
 figure("Name","2-Norm Diagram")
 hold on
+grid
 for iCurve = 1:nCurve
 plot(lambda_Cell{iCurve},norm2_Cell{iCurve},strcat(drawtype_Array(iCurve),"b"))
 end
-scatter(lambdaBifurcation,norm2Bifurcation,'pentagramb')
+stableLegend = plot([0 0],[0 0],'-b',"DisplayName","Stable Solutions");
+unstableLegend = plot([0 0],[0 0],':b',"DisplayName","Unstable Solutions");
+bifurcationPlots = scatter(lambdaBifurcation,norm2Bifurcation,...
+    "pentagramb","DisplayName","Bifurcations");
 hold off
+legend([stableLegend,unstableLegend,bifurcationPlots],"Location","best")
 
 end
