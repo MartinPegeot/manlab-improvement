@@ -15,9 +15,9 @@ sysName = "sys_nu=0.1_sigma=-1.5_beta=1_H=50.mat";
 diagram = load(strcat(pathName,"Diagrams\",diagramName)).Diagram;
 sys = load(strcat(pathName,"SysODE\",sysName)).sys;
 
-recastedDiagram = recastDiagramInformations(diagram);
+recastedDiagram = recastDiagramInformations(diagram,sys);
 
 plotManlabDiagram(recastedDiagram)
-plotNorm2Diagram(recastedDiagram,sys);
-plotEigenValues(recastedDiagram,sys)
-
+plotNorm2Diagram(recastedDiagram)
+plotEigenValues(recastedDiagram)
+plotLimitCycles(recastedDiagram,-1)

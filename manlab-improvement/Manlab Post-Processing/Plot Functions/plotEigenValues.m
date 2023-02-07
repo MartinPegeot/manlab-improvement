@@ -1,5 +1,6 @@
-function plotEigenValues(recastedDiagram,sys)
+function plotEigenValues(recastedDiagram)
 
+sys = recastedDiagram.sys;
 eigenValues_Cell = recastedDiagram.eigenValues_Cell;
 eigenIndex_Cell = recastedDiagram.eigenIndex_Cell;
 eigenValuesBifurcation = recastedDiagram.eigenValuesBifurcation;

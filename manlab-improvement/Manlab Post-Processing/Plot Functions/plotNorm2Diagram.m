@@ -1,5 +1,6 @@
-function plotNorm2Diagram(recastedDiagram,sys)
+function plotNorm2Diagram(recastedDiagram)
 
+sys = recastedDiagram.sys;
 Upp_Cell = recastedDiagram.Upp_Cell;
 Ustab = recastedDiagram.Ustab;
 drawtype_Array = recastedDiagram.drawtype_Array;
