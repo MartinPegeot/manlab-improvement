@@ -19,8 +19,10 @@ cuttedDiagram = {diagram{1:344}};
 
 recastedDiagram = recastDiagramInformations(cuttedDiagram,sys);
 
-plotManlabDiagram(recastedDiagram)
-plotNorm2Diagram(recastedDiagram)
-plotEigenValues(recastedDiagram)
-plotLimitCycles(recastedDiagram,-1)
-plotMultipleLimitCycles(recastedDiagram,[-5.5,0,10]);
+plotDiagramAndLimitCycles(recastedDiagram)
+
+% plotManlabDiagram(recastedDiagram)
+% plotNorm2Diagram(recastedDiagram)
+% plotEigenValues(recastedDiagram)
+% plotLimitCycles(recastedDiagram,-1)
+% plotMultipleLimitCycles(recastedDiagram,[-5.5,0,10]);

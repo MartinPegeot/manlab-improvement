@@ -21,9 +21,9 @@ for iSegment = 1:nSegment
 end
 hold off
 grid
-axis square
 xlabel("$x$","Interpreter","latex","FontSize",20)
 ylabel("$\frac{dx}{dt}$","Interpreter","latex","FontSize",20)
 title(strcat("\mu = ",num2str(lambdaValue)))
+axis square
 
 end

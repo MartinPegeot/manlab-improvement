@@ -13,6 +13,7 @@ else
     legendDisplay = [stableLegend,unstableLegend,bifurcationScatter];
 end
 
-legend([stableLegend,unstableLegend,bifurcationScatter],"Location","best")
+legend([stableLegend,unstableLegend,bifurcationScatter],"Location",...
+    "best","AutoUpdate","off")
 
 end
