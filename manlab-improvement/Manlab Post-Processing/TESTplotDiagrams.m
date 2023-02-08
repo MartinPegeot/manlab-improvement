@@ -24,5 +24,5 @@ plotDiagramAndLimitCycles(recastedDiagram)
 % plotManlabDiagram(recastedDiagram)
 % plotNorm2Diagram(recastedDiagram)
 % plotEigenValues(recastedDiagram)
-% plotLimitCycles(recastedDiagram,-1)
+% plotLimitCycles(recastedDiagram,-1);
 % plotMultipleLimitCycles(recastedDiagram,[-5.5,0,10]);

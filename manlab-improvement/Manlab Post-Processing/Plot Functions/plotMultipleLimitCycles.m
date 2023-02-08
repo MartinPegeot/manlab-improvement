@@ -1,4 +1,5 @@
-function plotMultipleLimitCycles(recastedDiagram,lambdaGridInformations)
+function plotMultipleLimitCycles...
+    (recastedDiagram,lambdaGridInformations)
 
 sys = recastedDiagram.sys;
 Upp_Cell = recastedDiagram.Upp_Cell;
@@ -15,13 +16,13 @@ else
 end
 lambdaPlot = linspace(lambdaMin,lambdaMax,nLambda);
 
-limitCycleFigure = figure("Name","Multiple Limit Cycles");
+multipleLimitCycleFigure = figure("Name","Multiple Limit Cycles");
 colorOrder = dispcolorML(nLambda);
 
 for iLambda = 1:nLambda
     displayColor = colorOrder(iLambda,:);
-    limitCycleFigure = plotLimitCycles(recastedDiagram,...
-    lambdaPlot(iLambda),limitCycleFigure,displayColor);
+    multipleLimitCycleFigure = plotLimitCycles(recastedDiagram,...
+    lambdaPlot(iLambda),multipleLimitCycleFigure,displayColor);
     hold on
     legendNames(iLambda) = plot(0,0,"Color",displayColor,"DisplayName",...
         strcat("\mu = ",num2str(lambdaPlot(iLambda))));
@@ -31,4 +32,5 @@ legend(legendNames)
 title('')
 axis square
 grid on
+
 end

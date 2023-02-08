@@ -1,31 +1,43 @@
-function plotDiagramAndLimitCycles(recastedDiagram)
+function plotDiagramAndLimitCycles...
+    (recastedDiagram)
 
 plotNorm2Diagram(recastedDiagram);
 diagramFigure = gcf;
 diagramAxis = gca;
 
-mainFigure = figure("Name","2-Norma Diagram and Limit Cycles");
-mainDiagramAxis = copyobj(diagramAxis,mainFigure);
-set(mainFigure,'Units','normalize','OuterPosition',[0 .07 1 .85])
-set(mainDiagramAxis,'Units','normalize','OuterPosition',[0 .5 1 .5])
-set(mainDiagramAxis,'xlim',[-6 0.1])
-close(diagramFigure)
-addDiagramLegend(mainDiagramAxis)
-
-
 nLambda = 5;
 lambdaMin = -5.5;
 lambdaMax = -0.1;
 lambdaPlot = linspace(lambdaMin,lambdaMax,nLambda);
-
-hold(mainDiagramAxis,"on")
 for iLambda = 1:nLambda
     lambdaValue = lambdaPlot(iLambda);
-    plotLimitCycles(recastedDiagram,lambdaValue)
+    plotLimitCycles(recastedDiagram,...
+        lambdaValue);
     limitCycleFigures{iLambda} = gcf;
-    limitCycleAxes{iLambda} = copyobj(gca,mainFigure);
+    limitCycleAxes{iLambda} = gca;
+end
+
+mainFigure = figure("Name","2-Norma Diagram and Limit Cycles");
+set(mainFigure,"Units","normalized","OuterPosition",[0 0.1 1 0.8])
+mainLayout = tiledlayout(3,nLambda);
+
+mainDiagramAxis = copyobj(diagramAxis,mainLayout);
+close(diagramFigure)
+mainDiagramAxis.Layout.Tile = 1:nLambda;
+mainDiagramAxis.Layout.TileSpan = [2 nLambda];
+set(mainDiagramAxis,'xlim',[-6 0.1])
+mainYlim = ylim;
+limitCycleLimits = [-mainYlim(end) mainYlim(end)];
+hold(mainDiagramAxis,"on")
+for iLambda = 1:nLambda
+    mainLimitCycleAxes{iLambda} = copyobj(limitCycleAxes{iLambda},...
+        mainLayout);
+    mainLimitCycleAxes{iLambda}.Layout.Tile = 2*nLambda+iLambda;
+    mainLimitCycleAxes{iLambda}.Layout.TileSpan = [1 1];
+    xlim(mainLimitCycleAxes{iLambda},limitCycleLimits);
+    ylim(mainLimitCycleAxes{iLambda},limitCycleLimits);
     close(limitCycleFigures{iLambda})
-    set(limitCycleAxes{iLambda},"Position",[(iLambda-1)/nLambda 0 .2 .4])
+    lambdaValue = lambdaPlot(iLambda);
     plot(mainDiagramAxis,[lambdaValue lambdaValue],...
         ylim(mainDiagramAxis),'--k')
 end

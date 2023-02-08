@@ -1,20 +1,38 @@
-f1 = figure(1);
-plot([0 1],[0 1],'b');
+scores = [444 460 380 
+          387 366 500 
+          365 451 611 
+          548 412 452];
 
-f2 = figure(2);
-plot([0 1],[0.25 0.75],'r')
-% ax2 = axes('Parent',f,'Units','normalized','OuterPosition',[.1 .1 .1 .2]);
-f3 = figure(3);
-plot([0.5 1],[0.1 0.2],'g')
-% ax3 = axes('Parent',f,'Units','normalized','OuterPosition',[.2 .1 .1 .2]);
+strikes = [9  6  5  
+           6  4  8 
+           4  7  16  
+           10 9  8];
+     
+t = tiledlayout(3,3);
 
-ax1 = f1.Children;
-% ax1 = axes('Parent',f,'Units','normalized','OuterPosition',[0 .3 1 .7]);
+% Team 1
+nexttile
+plot([1 2 3 4],strikes(:,1),'-o')
+title('Team 1 Strikes')
 
-ftot = figure('Units','normalized','OuterPosition',[0 0.06 1 0.94]);
-copyobj(ax1,ftot);
-set(ax1,'OuterPosition',[.1 .1 .1 .2])
+% Team 2
+nexttile
+plot([1 2 3 4],strikes(:,2),'-o')
+title('Team 2 Strikes')
 
-ax1cc = copyobj(ax1,ftot);
-set(ax1cc,'OuterPosition',[.2 .1 .1 .2])
+% Team 3
+nexttile
+plot([1 2 3 4],strikes(:,3),'-o')
+title('Team 3 Strikes')
 
+nexttile([2 3]);
+bar([1 2 3 4],scores)
+legend('Team 1','Team 2','Team 3','Location','northwest')
+
+% Configure ticks and axis labels
+xticks([1 2 3 4])
+xlabel('Game')
+ylabel('Score')
+
+% Add layout title
+title(t,'April Bowling League Data')
